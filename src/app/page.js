@@ -38,8 +38,14 @@ export default function Home() {
   });
 
   useEffect(() => {
+    if (circulation == "NaN") {
+      setCirculation(0);
+    }
+  }, [circulation]);
+
+  useEffect(() => {
     setSupply(Number(tokenSupply) / 10 ** 18);
-    setCirculation(Number(tokenSupply - contractBalance) / 10 ** 18);
+    setCirculation(Number(tokenSupply) - Number(contractBalance) / 10 ** 18);
   }, [tokenSupply, contractBalance]);
 
   return (
