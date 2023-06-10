@@ -47,7 +47,7 @@ export default function Home() {
 
   useEffect(() => {
     setSupply(Number(tokenSupply) / 10 ** 18);
-    setCirculation(Number(tokenSupply) - Number(contractBalance) / 10);
+    setCirculation(Number(tokenSupply) - Number(contractBalance) / 10 ** 18);
     console.log(parseInt(contractBalance));
   }, [tokenSupply, contractBalance]);
 
@@ -73,7 +73,7 @@ export default function Home() {
             </div>{" "}
             <div className="">
               <span className="bg-blue-800 p-2 rounded-md">
-                {parseInt(circulation.toFixed(0))}
+                {parseInt(circulation)}
               </span>{" "}
               in Circulation
             </div>
