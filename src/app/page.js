@@ -20,6 +20,7 @@ export default function Home() {
     yes ? getAnalytics(app) : null
   );
 
+  const handlerAddress = process.env.NEXT_PUBLIC_HANDLER;
   const tokenAddress = process.env.NEXT_PUBLIC_TOKEN;
 
   const { data: tokenSupply } = useContractRead({
@@ -31,9 +32,10 @@ export default function Home() {
   });
   const { data: contractBalance } = useContractRead({
     address: tokenAddress,
-    abi: abi,
-    functionName: "balance",
+    abi: tokenAbi,
+    functionName: "balanceOf",
     chainId: polygonMumbai.id,
+    args: [handlerAddress],
     watch: true,
   });
 
@@ -45,7 +47,8 @@ export default function Home() {
 
   useEffect(() => {
     setSupply(Number(tokenSupply) / 10 ** 18);
-    setCirculation(Number(tokenSupply) - Number(contractBalance) / 10 ** 18);
+    setCirculation(Number(tokenSupply) - Number(contractBalance) / 10);
+    console.log(parseInt(contractBalance));
   }, [tokenSupply, contractBalance]);
 
   return (
@@ -70,7 +73,7 @@ export default function Home() {
             </div>{" "}
             <div className="">
               <span className="bg-blue-800 p-2 rounded-md">
-                {circulation.toFixed(0)}
+                {parseInt(circulation.toFixed(0))}
               </span>{" "}
               in Circulation
             </div>
