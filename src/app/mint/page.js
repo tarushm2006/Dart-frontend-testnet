@@ -51,7 +51,7 @@ export default function Mint() {
 
   const { data: data1, write, isError: writeError } = useContractWrite(config);
   useContractEvent({
-    address: handlerAddress,
+    address: "0x05b418bf83bc29e0439a1D8376d4b98b9d820a5f",
     abi: abi,
     chainId: polygonMumbai.id,
     eventName: "Mint",

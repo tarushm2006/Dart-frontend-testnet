@@ -63,8 +63,10 @@ export default function Home() {
           </div>
           <div className="flex flex-row gap-20">
             <div className="">
-              <span className="bg-blue-800 p-2 rounded-md">{supply}</span> DINR
-              Issued
+              <span className="bg-blue-800 p-2 rounded-md">
+                {supply.toFixed(0)}
+              </span>{" "}
+              DINR Issued
             </div>{" "}
             <div className="">
               <span className="bg-blue-800 p-2 rounded-md">
