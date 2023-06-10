@@ -20,15 +20,17 @@ export default function Home() {
     yes ? getAnalytics(app) : null
   );
 
+  const tokenAddress = process.env.NEXT_PUBLIC_TOKEN;
+
   const { data: tokenSupply } = useContractRead({
-    address: "0x94267eA58ED3E40757aF2815a6af23E715300130",
+    address: tokenAddress,
     abi: tokenAbi,
     functionName: "totalSupply",
     chainId: polygonMumbai.id,
     watch: true,
   });
   const { data: contractBalance } = useContractRead({
-    address: "0xA406501FDBBc0e7419b8dDD5562B6131AAE17A4c",
+    address: tokenAddress,
     abi: abi,
     functionName: "balance",
     chainId: polygonMumbai.id,
