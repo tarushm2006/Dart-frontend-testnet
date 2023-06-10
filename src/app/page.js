@@ -10,7 +10,6 @@ import Link from "next/link";
 import { tokenAbi } from "../abi/token";
 import { polygonMumbai } from "viem/chains";
 import { useEffect, useState } from "react";
-import * as ethers from "ethers";
 import { abi } from "../abi/abi";
 import { Button } from "@mui/material";
 
